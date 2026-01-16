@@ -12,8 +12,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-@RequiredArgsConstructor
-@Transactional(readOnly = true)
 @Service
 public class LocalFileStorageService implements FileStorageService {
 
