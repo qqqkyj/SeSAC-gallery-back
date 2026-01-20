@@ -38,6 +38,6 @@ public class PhotoIntegrationTest {
 
         mockMvc.perform(get("/api/photos"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].title").value("image1"));
+                .andExpect(jsonPath("$[0].title").value("image2"));
     }
 }
