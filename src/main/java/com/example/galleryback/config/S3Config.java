@@ -10,7 +10,7 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 
 @Configuration
-@ConditionalOnProperty(name = "cloud.aws.s3.bucket")//특정 설정값(Property)이 존재하거나 특정 조건일 때만 이 클래스를 Bean으로 등록
+@ConditionalOnProperty(name = "cloud.aws.s3.bucket", havingValue = "true")//특정 설정값(Property)이 존재하거나 특정 조건일 때만 이 클래스를 Bean으로 등록
 public class S3Config {
     @Value("${cloud.aws.credentials.access-key}")
     private String accessKey;
