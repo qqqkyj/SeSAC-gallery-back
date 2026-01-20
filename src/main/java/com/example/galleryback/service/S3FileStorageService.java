@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Service
-@Primary // 구현체 중 이 클래스를 최우선으로 주입
+//@Primary // 구현체 중 이 클래스를 최우선으로 주입
 //특정 설정값(Property)이 존재하거나 특정 조건일 때만 이 클래스를 Bean으로 등록
 //@ConditionalOnProperty(name = "cloud.aws.s3.bucket", havingValue = "true")
 @ConditionalOnExpression("'${cloud.aws.s3.bucket:}'.length()>3")
