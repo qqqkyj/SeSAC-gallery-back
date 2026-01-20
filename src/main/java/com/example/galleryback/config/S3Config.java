@@ -1,7 +1,7 @@
 package com.example.galleryback.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
@@ -10,7 +10,9 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 
 @Configuration
-@ConditionalOnProperty(name = "cloud.aws.s3.bucket", havingValue = "true")//특정 설정값(Property)이 존재하거나 특정 조건일 때만 이 클래스를 Bean으로 등록
+//특정 설정값(Property)이 존재하거나 특정 조건일 때만 이 클래스를 Bean으로 등록
+//@ConditionalOnProperty(name = "cloud.aws.s3.bucket")
+@ConditionalOnExpression("!'${cloud.aws.s3.bucket:}'.isEmpty()")
 public class S3Config {
     @Value("${cloud.aws.credentials.access-key}")
     private String accessKey;

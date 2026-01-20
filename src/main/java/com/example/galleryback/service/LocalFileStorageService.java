@@ -14,7 +14,6 @@ import java.nio.file.Paths;
 import java.util.UUID;
 
 @Service
-@ConditionalOnProperty(name = "cloud.aws.s3.bucket", havingValue = "false")
 public class LocalFileStorageService implements FileStorageService {
 
     @Value("${upload.path}")

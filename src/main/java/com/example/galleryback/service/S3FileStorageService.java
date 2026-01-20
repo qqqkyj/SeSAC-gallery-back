@@ -2,6 +2,7 @@ package com.example.galleryback.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,9 @@ import java.util.UUID;
 
 @Service
 @Primary // 구현체 중 이 클래스를 최우선으로 주입
-@ConditionalOnProperty(name = "cloud.aws.s3.bucket", havingValue = "true")//특정 설정값(Property)이 존재하거나 특정 조건일 때만 이 클래스를 Bean으로 등록
+//특정 설정값(Property)이 존재하거나 특정 조건일 때만 이 클래스를 Bean으로 등록
+//@ConditionalOnProperty(name = "cloud.aws.s3.bucket", havingValue = "true")
+@ConditionalOnExpression("!'${cloud.aws.s3.bucket:}'.isEmpty()")
 @RequiredArgsConstructor
 public class S3FileStorageService implements FileStorageService{
 
